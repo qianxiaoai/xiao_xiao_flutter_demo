@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xiao_xiao_flutter_demo/wrap_line_delegate.dart';
+import 'package:xiao_xiao_flutter_demo/wrap_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,77 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(height: 20),
-          _buildWrapAutoWidget(labels),
-          _buildFlowMaxLineWidget(labels),
+          buildWrapAutoWidget(labels),
+          buildFlutterOfficialFlow(),
+          buildFlowMaxLineWidget(labels),
+          Container(height: 100,color: Colors.lightGreen, child: FlowMenu()),
         ],
       ),
     );
-  }
-
-  Widget _buildWrapAutoWidget(List<String> labels) {
-    return Container(
-        width: 200,
-        height: 200,
-        color: const Color(0x22880F00),
-        child: Padding(
-            padding: const EdgeInsets.only(left: 8, top: 6, right: 12),
-            child: Wrap(
-                clipBehavior: Clip.hardEdge,
-                spacing: 4,
-                runSpacing: 6,
-                children: labels
-                    .map<Widget>((str) => Container(
-                        decoration: const BoxDecoration(
-                            color: Color(0XFFF9f6EF),
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
-                        child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 2, top: 1, right: 2, bottom: 1),
-                            child: Text(
-                              str,
-                              style: const TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.normal,
-                                  color: Color(0xFF685B51)),
-                            ))))
-                    .toList())));
-  }
-
-  Widget _buildFlowMaxLineWidget(List<String> labels) {
-    return Container(
-        width: 200,
-        height: 200,
-        color: const Color(0x22FF00FF),
-        child: Padding(
-            padding: const EdgeInsets.all(10),
-            child: Flow(
-              children: labels
-                  .map<Widget>((tag) => Container(
-                      height: 16,
-                      decoration: const BoxDecoration(
-                          color: Color(0XFFF9f6EF),
-                          borderRadius: BorderRadius.all(Radius.circular(2))),
-                      child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 2,
-                            top: 1,
-                            bottom: 1,
-                            right: 2,
-                          ),
-                          child: Text(
-                            tag,
-                            style: const TextStyle(
-                                fontSize: 11,
-                                fontWeight: FontWeight.normal,
-                                color: Color(0xFF685B51)),
-                          ))))
-                  .toList(),
-              delegate: WrapLineDelegate(
-                maxLine: 2,
-                spacing: 4,
-                runSpacing: 6,
-                itemHeight: 18,
-              ),
-            )));
   }
 }

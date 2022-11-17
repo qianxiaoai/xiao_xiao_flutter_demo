@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 /// max line delegate。支持设置最多显示几行。需要指定单行高度。
-class WrapLineDelegate extends FlowDelegate {
-  WrapLineDelegate({
+class FlowLineDelegate extends FlowDelegate {
+  FlowLineDelegate({
     this.maxLine = 0,
     this.spacing = 0,
     this.runSpacing = 0,
@@ -74,19 +74,6 @@ class WrapLineDelegate extends FlowDelegate {
     }
   }
 
-  ///当前行能否绘制下折行
-  bool canAddToFoldWidget(int i, double offsetX, double screenW,
-      FlowPaintingContext context, int lastIndex) {
-    if ((offsetX +
-            (context.getChildSize(i)?.width ?? 0) +
-            spacing +
-            (context.getChildSize(lastIndex)?.width ?? 0)) <=
-        screenW) {
-      return true;
-    }
-    return false;
-  }
-
   double toMaxHeight(double oldMaxHeight, newMaxHeight) {
     if (oldMaxHeight > newMaxHeight) {
       return oldMaxHeight;
@@ -120,7 +107,7 @@ class WrapLineDelegate extends FlowDelegate {
   }
 
   @override
-  bool shouldRepaint(covariant WrapLineDelegate oldDelegate) {
+  bool shouldRepaint(covariant FlowLineDelegate oldDelegate) {
     if (line != oldDelegate.line) {
       return true;
     }
@@ -128,7 +115,7 @@ class WrapLineDelegate extends FlowDelegate {
   }
 
   @override
-  bool shouldRelayout(covariant WrapLineDelegate oldDelegate) {
+  bool shouldRelayout(covariant FlowLineDelegate oldDelegate) {
     return (line != oldDelegate.line);
   }
 }
