@@ -1,0 +1,10 @@
+# This file tracks properties of this Flutter project.
+# Used by Flutter tool to assess capabilities and perform upgrades etc.
+#
+# This file should be version controlled and should not be manually edited.
+
+version:
+  revision: 19a3b95ff4cd45da2a56af2a83c659757f9b9cc2
+  channel: pregnancy_2.10.3_master
+
+project_type: app
